@@ -32,8 +32,9 @@
             <tr>
                 <th scope="col" class="px-6 py-3">ID</th>
                 <th scope="col" class="px-6 py-3">Task Name</th>
+                <th scope="col" class="px-6 py-3">Description</th> <!-- New Column -->
                 <th scope="col" class="px-6 py-3">Status</th>
-                <th scope="col" class="px-6 py-3">Due Date</th> <!-- New Column -->
+                <th scope="col" class="px-6 py-3">Due Date</th>
                 <th scope="col" class="px-6 py-3">Created At</th>
                 <th scope="col" class="px-6 py-3">Actions</th>
             </tr>
@@ -43,6 +44,7 @@
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td class="px-6 py-4">{{ $task->id }}</td>
                     <td class="px-6 py-4">{{ $task->name }}</td>
+                    <td class="px-6 py-4">{{ $task->description }}</td> <!-- Display Description -->
                     <td class="px-6 py-4">
                         <span class="
                             inline-block px-3 py-1 rounded-full text-xs font-medium

@@ -8,36 +8,31 @@ use App\Models\Task;
 
 class TasksController extends Controller
 {
-    // Display a listing of the resource.
+
      
-    // public function index()
-    // {
-    //     $tasks = auth()->user()->tasks;
-    //     return view('tasks.index', ['tasks' => $tasks]);
-    // }
     public function index()
 {
-    // Paginate the tasks (e.g., 10 tasks per page)
+// Paginate the tasks 
     $tasks = Task::where('user_id', auth()->id())->paginate(10);
 
     return view('tasks.index', compact('tasks'));
 }
 
-    //Show the form for creating a new resource.
+//Show the form for creating a new resource.
    
     public function create()
     {
         return view('tasks.create');
     }
 
-    //Store a newly created resource in storage.
+//Store a newly created resource in storage.
 
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|min:3',
             'description' => 'nullable',
-            'due_date' => 'nullable|date', // Validate due_date as a date (optional)
+            'due_date' => 'nullable|date', 
            
         ]);
 
@@ -49,7 +44,7 @@ class TasksController extends Controller
     
     public function edit(Task $task)
     {
-        // Check if the authenticated user owns the task
+// Check if the authenticated user owns the task
         if (Auth::id() !== $task->user_id) {
             abort(403, 'Unauthorized action.');
         }
@@ -58,7 +53,7 @@ class TasksController extends Controller
     }
 
     
-     // Update the specified resource in storage.
+// Update the specified resource in storage.
      public function update(Request $request, Task $task)
      {
          // Check if the authenticated user owns the task
@@ -70,7 +65,7 @@ class TasksController extends Controller
              'name' => 'required|min:3',
              'description' => 'nullable',
              'status' => 'required|in:in-progress,completed',
-             'due_date' => 'nullable|date', // Validate due_date as a date (optional)
+             'due_date' => 'nullable|date', 
          ]);
      
          $task->update($request->all());
