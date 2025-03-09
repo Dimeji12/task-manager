@@ -17,15 +17,14 @@
 </head>
 <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen">
 
-
 <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
-            <th scope="col" class="px-6 py-3">Product name</th>
-            <th scope="col" class="px-6 py-3">Color</th>
-            <th scope="col" class="px-6 py-3">Category</th>
-            <th scope="col" class="px-6 py-3">Price</th>
+            <th scope="col" class="px-6 py-3">ID</th>
+            <th scope="col" class="px-6 py-3">Task Name</th>
+            <th scope="col" class="px-6 py-3">Status</th>
+            <th scope="col" class="px-6 py-3">Created At</th>
             <th scope="col" class="px-6 py-3">Actions</th> <!-- Added Actions Column -->
         </tr>
         </thead>
@@ -45,12 +44,22 @@
                     </span>
                 </td>
                 <td class="py-3 px-4">{{ $task['created_at'] }}</td>
-                <td class="py-3 px-4">
+                <td class="py-3 px-4 flex items-center space-x-2">
+                    <!-- Edit Button -->
                     <a href="{{ route('tasks.edit', $task['id']) }}" 
                        class="text-blue-600 hover:underline dark:text-blue-400">
                         Edit
                     </a>
-                </td> 
+
+                    <!-- Delete Button -->
+                    <form action="{{ route('tasks.destroy', $task['id']) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-red-600 hover:underline dark:text-red-400">
+                            Delete
+                        </button>
+                    </form>
+                </td>
             </tr>
         @endforeach
         </tbody>
