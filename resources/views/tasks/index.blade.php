@@ -33,6 +33,7 @@
                 <th scope="col" class="px-6 py-3">ID</th>
                 <th scope="col" class="px-6 py-3">Task Name</th>
                 <th scope="col" class="px-6 py-3">Status</th>
+                <th scope="col" class="px-6 py-3">Due Date</th> <!-- New Column -->
                 <th scope="col" class="px-6 py-3">Created At</th>
                 <th scope="col" class="px-6 py-3">Actions</th>
             </tr>
@@ -40,28 +41,28 @@
         <tbody>
             @foreach ($tasks as $task)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="px-6 py-4">{{ $task['id'] }}</td>
-                    <td class="px-6 py-4">{{ $task['name'] }}</td>
+                    <td class="px-6 py-4">{{ $task->id }}</td>
+                    <td class="px-6 py-4">{{ $task->name }}</td>
                     <td class="px-6 py-4">
                         <span class="
                             inline-block px-3 py-1 rounded-full text-xs font-medium
-                            {{ $task['status'] === 'completed' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' : '' }}
-                            {{ $task['status'] === 'in-progress' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300' : '' }}
-                            {{ $task['status'] === 'pending' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300' : '' }}
+                            {{ $task->status === 'completed' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' : '' }}
+                            {{ $task->status === 'in-progress' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300' : '' }}
                         ">
-                            {{ strtoupper($task['status']) }}
+                            {{ strtoupper($task->status) }}
                         </span>
                     </td>
-                    <td class="px-6 py-4">{{ $task['created_at'] }}</td>
+                    <td class="px-6 py-4">{{ $task->due_date ? \Carbon\Carbon::parse($task->due_date)->format('M d, Y H:i') : 'No due date' }}</td>
+                    <td class="px-6 py-4">{{ $task->created_at->format('M d, Y') }}</td>
                     <td class="px-6 py-4 flex items-center space-x-2">
                         <!-- Edit Button -->
-                        <a href="{{ route('tasks.edit', $task['id']) }}" 
+                        <a href="{{ route('tasks.edit', $task->id) }}" 
                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                             Edit
                         </a>
 
                         <!-- Delete Button -->
-                        <form action="{{ route('tasks.destroy', $task['id']) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?');">
+                        <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?');">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline">
@@ -125,6 +126,6 @@
         </nav>
     @endif
 </div>
-
+<script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 </body>
 </html>

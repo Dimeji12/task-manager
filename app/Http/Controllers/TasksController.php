@@ -31,12 +31,14 @@ class TasksController extends Controller
     }
 
     //Store a newly created resource in storage.
-     
+
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|min:3',
             'description' => 'nullable',
+            'due_date' => 'nullable|date', // Validate due_date as a date (optional)
+           
         ]);
 
         Auth::user()->tasks()->create($request->all());
@@ -57,23 +59,24 @@ class TasksController extends Controller
 
     
      // Update the specified resource in storage.
-    public function update(Request $request, Task $task)
-    {
-        // Check if the authenticated user owns the task
-        if (Auth::id() !== $task->user_id) {
-            abort(403, 'Unauthorized action.');
-        }
-
-        $request->validate([
-            'name' => 'required|min:3',
-            'description' => 'nullable',
-            'status' => 'required|in:in-progress,completed',
-        ]);
-
-        $task->update($request->all());
-
-        return redirect()->route('tasks.index')->with('success', 'Task updated successfully.');
-    }
+     public function update(Request $request, Task $task)
+     {
+         // Check if the authenticated user owns the task
+         if (Auth::id() !== $task->user_id) {
+             abort(403, 'Unauthorized action.');
+         }
+     
+         $request->validate([
+             'name' => 'required|min:3',
+             'description' => 'nullable',
+             'status' => 'required|in:in-progress,completed',
+             'due_date' => 'nullable|date', // Validate due_date as a date (optional)
+         ]);
+     
+         $task->update($request->all());
+     
+         return redirect()->route('tasks.index')->with('success', 'Task updated successfully.');
+     }
 
     public function destroy(Task $task)
 {
