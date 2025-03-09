@@ -10,11 +10,18 @@ class TasksController extends Controller
 {
     // Display a listing of the resource.
      
+    // public function index()
+    // {
+    //     $tasks = auth()->user()->tasks;
+    //     return view('tasks.index', ['tasks' => $tasks]);
+    // }
     public function index()
-    {
-        $tasks = auth()->user()->tasks;
-        return view('tasks.index', ['tasks' => $tasks]);
-    }
+{
+    // Paginate the tasks (e.g., 10 tasks per page)
+    $tasks = Task::where('user_id', auth()->id())->paginate(10);
+
+    return view('tasks.index', compact('tasks'));
+}
 
     //Show the form for creating a new resource.
    
