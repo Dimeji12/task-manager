@@ -29,8 +29,9 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+              @yield('content')
             </main>
         </div>
+        <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     </body>
 </html>
