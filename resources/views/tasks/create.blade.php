@@ -1,19 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h2>Create Task</h2>
+<div class="container mx-auto p-6">
+    <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Create Task</h2>
     <form action="{{ route('tasks.store') }}" method="POST">
         @csrf
-        <div class="mb-3">
-            <label for="name" class="form-label">Task Name</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+
+        <!-- Task Name -->
+        <div class="mb-6">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Task Name</label>
+            <input type="text" id="name" name="name" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
         </div>
-        <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" name="description"></textarea>
+
+        <!-- Task Description -->
+        <div class="mb-6">
+            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+            <textarea id="description" name="description" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Create Task</button>
+
+        <!-- Due Date -->
+        <div class="mb-6">
+            <label for="due_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Due Date</label>
+            <input type="datetime-local" id="due_date" name="due_date" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Create Task
+        </button>
     </form>
 </div>
 @endsection
