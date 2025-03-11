@@ -15,6 +15,9 @@ Route::get('/dashboard', function () {
 
 //Route::get('/tasks', [TasksController::class, 'index'])->middleware(['auth', 'verified'])->name('tasks.index');
 
+Route::middleware('admin')->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+});
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('tasks', TasksController::class);
