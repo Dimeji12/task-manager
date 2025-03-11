@@ -1,35 +1,39 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    // Display the admin dashboard with a list of users
     public function index()
-{
-    $users = User::where('is_admin', false)->get();
-    return view('admin.dashboard', compact('users'));
-}
+    {
+        $users = User::where('role_id', 2)->get(); // Fetch all regular users (role_id = 2)
+        return view('admin.dashboard', compact('users'));
+    }
 
-public function viewUser($id)
-{
-    $user = User::with('tasks')->findOrFail($id);
-    return view('admin.user.view', compact('user'));
-}
+    // Display a specific user's tasks
+    public function viewUserTasks($userId)
+    {
+        $user = User::findOrFail($userId);
+        return view('admin.user_tasks', compact('user'));
+    }
 
-public function assignTask(Request $request, $id)
-{
-    $user = User::findOrFail($id);
+    // Assign a task to a specific user
+    public function assignTask(Request $request, $userId)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
 
-    $task = new Task([
-        'title' => $request->input('title'),
-        'description' => $request->input('description'),
-        'user_id' => $user->id,
-    ]);
+        $user = User::findOrFail($userId);
+        $user->tasks()->create([
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
 
-    $task->save();
-
-    return redirect()->back()->with('success', 'Task assigned successfully.');
-}
+        return redirect()->route('admin.user.view', $userId)->with('success', 'Task assigned successfully.');
+    }
 }

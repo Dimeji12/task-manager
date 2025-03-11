@@ -6,16 +6,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
- */
 class UserFactory extends Factory
 {
-    /**
-     * The current password being used by the factory.
-     */
-    protected static ?string $password;
-
     /**
      * Define the model's default state.
      *
@@ -24,11 +16,11 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'name' => fake()->name(), // Generates a random name
+            'email' => fake()->unique()->safeEmail(), // Generates a unique email
+            'email_verified_at' => now(), // Sets email_verified_at to the current time
+            'password' => Hash::make('password'), // Default password is 'password'
+            'remember_token' => Str::random(10), // Generates a random remember token
         ];
     }
 
@@ -38,7 +30,7 @@ class UserFactory extends Factory
     public function unverified(): static
     {
         return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
+            'email_verified_at' => null, // Sets email_verified_at to null for unverified users
         ]);
     }
 }

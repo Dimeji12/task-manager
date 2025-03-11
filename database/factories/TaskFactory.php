@@ -2,11 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Task>
- */
 class TaskFactory extends Factory
 {
     /**
@@ -17,10 +15,10 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->sentence(3),
-            'description' => $this->faker->paragraph(),
-            'status' => $this->faker->randomElement(['in-progress', 'completed']),
-            'user_id' => \App\Models\User::factory(),
+            'name' => fake()->sentence(3), // Generates a 3-word sentence for the task name
+            'description' => fake()->paragraph(), // Generates a random paragraph for the description
+            'status' => fake()->randomElement(['in-progress', 'completed']), // Randomly assigns a status
+            'user_id' => User::factory(), // Associates the task with a user (creates a new user if none exists)
         ];
     }
 }

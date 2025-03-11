@@ -15,14 +15,15 @@ Route::get('/dashboard', function () {
 
 
 
-Route::middleware('admin')->group(function () {
-    // Admin dashboard route
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-    // View user details and tasks
-    Route::get('/admin/user/{id}', [AdminController::class, 'viewUser'])->name('admin.user.view');
 
-    Route::post('/admin/user/{id}/assign-task', [AdminController::class, 'assignTask'])->name('admin.user.assignTask');
+
+// Admin Dashboard Routes
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/user/{userId}', [AdminController::class, 'viewUserTasks'])->name('admin.user.view');
+    Route::post('/admin/user/{userId}/assign-task', [AdminController::class, 'assignTask'])->name('admin.user.assignTask');
 });
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('tasks', TasksController::class);
