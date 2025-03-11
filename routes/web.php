@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,10 +14,14 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-//Route::get('/tasks', [TasksController::class, 'index'])->middleware(['auth', 'verified'])->name('tasks.index');
 
 Route::middleware('admin')->group(function () {
+    // Admin dashboard route
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+    // View user details and tasks
+    Route::get('/admin/user/{id}', [AdminController::class, 'viewUser'])->name('admin.user.view');
+
+    Route::post('/admin/user/{id}/assign-task', [AdminController::class, 'assignTask'])->name('admin.user.assignTask');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
