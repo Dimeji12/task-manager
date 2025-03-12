@@ -6,11 +6,18 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
     // Display the admin dashboard with a list of users
+
     public function index()
     {
-        $users = User::where('role_id', 2)->get(); // Fetch all regular users (role_id = 2)
-        return view('admin.dashboard', compact('users'));
+        // $users = User::where('role_id', 2)->get(); // Fetch all regular users (role_id = 2)
+        // return view('admin.dashboard', compact('users'));
+        $users = User::all(); // Fetch users from the database
+        return view('dashboard', compact('users'));
     }
 
     // Display a specific user's tasks

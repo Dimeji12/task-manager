@@ -13,8 +13,6 @@ class TasksController extends Controller
     public function index()
 {
 
-// Paginate the tasks 
-
 // this  Paginates the tasks 
 
     $tasks = Task::where('user_id', auth()->id())->paginate(10);
@@ -23,7 +21,7 @@ class TasksController extends Controller
 }
 
 
-//Show the form for creating a new resource.
+
 
 //shows the form for creating a new resource.
 
@@ -34,7 +32,7 @@ class TasksController extends Controller
     }
 
 
-//Store a newly created resource in storage.
+
 
 //Store a newly created task in database.
 
@@ -57,7 +55,7 @@ class TasksController extends Controller
     public function edit(Task $task)
     {
 
-// Check if the authenticated user owns the task
+
 
 // Checks if the authenticated user owns the task he wants to update
 
@@ -70,7 +68,7 @@ class TasksController extends Controller
 
     
 
-// Update the specified resource in storage.
+
 
 // This Updates the specified task in the data base after confirming the task belongs 
 // to the user .

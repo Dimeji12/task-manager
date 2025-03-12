@@ -20,6 +20,7 @@
         <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
             @if (Route::has('login'))
                 <nav class="flex items-center justify-end gap-4">
+                <img src="{{ asset('images/chrysalis.png') }}" alt="Task Manager" class="w-38 h-20 object-cover rounded-t-lg lg:rounded-t-none lg:rounded-r-lg">
                     @auth
                         <a
                             href="{{ url('/tasks') }}"

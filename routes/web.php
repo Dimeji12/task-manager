@@ -14,15 +14,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-
-
-
 // Admin Dashboard Routes
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/user/{userId}', [AdminController::class, 'viewUserTasks'])->name('admin.user.view');
-    Route::post('/admin/user/{userId}/assign-task', [AdminController::class, 'assignTask'])->name('admin.user.assignTask');
-});
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
