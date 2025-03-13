@@ -1,4 +1,3 @@
-// resources/js/taskFilter.js
 document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('search');
     const taskCards = document.querySelectorAll('.task-card');
@@ -9,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const completedTasksLink = document.getElementById('completed-tasks');
     const inProgressTasksLink = document.getElementById('in-progress-tasks');
 
-    let currentFilter = 'all'; // Default filter
+    let currentFilter = 'all'; 
 
     if (searchInput && taskCards.length > 0 && filterStateBox) {
         // Search Functionality
@@ -51,14 +50,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 const matchesFilter = currentFilter === 'all' || taskStatus === currentFilter;
 
                 if (matchesSearch && matchesFilter) {
-                    card.style.display = 'block'; // Show the card
+                    card.style.display = 'block'; 
                 } else {
-                    card.style.display = 'none'; // Hide the card
+                    card.style.display = 'none'; 
                 }
             });
         }
-
-        // Update Filter State Box
+  // Update Filter State Box
         function updateFilterStateBox(filterText) {
             filterStateBox.textContent = filterText;
         }

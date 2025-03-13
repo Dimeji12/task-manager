@@ -1,4 +1,3 @@
-<!-- Toggle Button for Small Screens -->
 <button id="sidebar-toggle" class="fixed top-4 left-4 z-50 p-2 text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600">
     <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
@@ -10,23 +9,11 @@
 <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <ul class="space-y-6 font-medium">
-            <!-- My Tasks Heading -->
+           
             <li>
                 <span class="ms-3 text-lg font-semibold text-gray-900 dark:text-white">My Tasks</span>
             </li>
 
-            <!-- Create Task Button -->
-            <li>
-                <div class="mb-6">
-                    <a href="{{ route('tasks.create') }}" 
-                       class="flex items-center justify-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200">
-                        <svg class="w-5 h-5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                        </svg>
-                        Create Task
-                    </a>
-                </div>
-            </li>
 
             <!-- All Tasks -->
             <li>
@@ -90,23 +77,23 @@
 <!-- Overlay for Small Screens -->
 <div id="sidebar-overlay" class="fixed inset-0 z-30 bg-black/50 sm:hidden hidden"></div>
 
-<!-- JavaScript to Handle Sidebar Toggle and Click Outside -->
+<!-- This is for side bar responsiveness -->
 <script>
     const sidebar = document.getElementById('default-sidebar');
     const sidebarToggle = document.getElementById('sidebar-toggle');
     const sidebarOverlay = document.getElementById('sidebar-overlay');
 
-    // Toggle Sidebar and Overlay
+  
     sidebarToggle.addEventListener('click', () => {
         sidebar.classList.toggle('-translate-x-full');
         sidebarOverlay.classList.toggle('hidden');
-        sidebarToggle.classList.toggle('hidden'); // Hide the toggler when sidebar is visible
+        sidebarToggle.classList.toggle('hidden'); 
     });
 
-    // Close Sidebar When Clicking Outside
+ 
     sidebarOverlay.addEventListener('click', () => {
         sidebar.classList.add('-translate-x-full');
         sidebarOverlay.classList.add('hidden');
-        sidebarToggle.classList.remove('hidden'); // Show the toggler when sidebar is hidden
+        sidebarToggle.classList.remove('hidden'); 
     });
 </script>

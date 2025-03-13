@@ -14,9 +14,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-// Admin Dashboard Routes
-Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('tasks', TasksController::class);

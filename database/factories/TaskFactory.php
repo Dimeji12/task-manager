@@ -15,9 +15,9 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->sentence(3), // Generates a 3-word sentence for the task name
-            'description' => fake()->paragraph(), // Generates a random paragraph for the description
-            'status' => fake()->randomElement(['in-progress', 'completed']), // Randomly assigns a status
+            'name' => fake()->sentence(3), 
+            'description' => fake()->paragraph(), 
+            'status' => fake()->randomElement(['in-progress', 'completed']), 
             'user_id' => User::factory(), // Associates the task with a user (creates a new user if none exists)
         ];
     }

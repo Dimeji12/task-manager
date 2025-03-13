@@ -9,7 +9,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-     //       RolesTableSeeder::class, // Seed roles first
+   
             UserSeeder::class,
             TaskSeeder::class,
         ]);

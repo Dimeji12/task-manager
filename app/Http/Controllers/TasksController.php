@@ -24,19 +24,11 @@ class TasksController extends Controller
 
 
 //shows the form for creating a new resource.
-
-   
     public function create()
     {
         return view('tasks.create');
     }
-
-
-
-
 //Store a newly created task in database.
-
-
     public function store(Request $request)
     {
         $request->validate([

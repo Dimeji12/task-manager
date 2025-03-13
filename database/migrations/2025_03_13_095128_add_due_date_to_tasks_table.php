@@ -13,7 +13,7 @@ return new class extends Migration
     {
      
             Schema::table('tasks', function (Blueprint $table) {
-                $table->dateTime('due_date')->nullable(); // Use nullable() if due dates are optional
+                $table->dateTime('due_date')->nullable(); 
             });
         }
       

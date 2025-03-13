@@ -14,7 +14,7 @@
     @endif
 
   
-    <!-- Flowbite CSS -->
+   
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 </head>
 <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] min-h-screen">
@@ -39,7 +39,6 @@
 
     <!-- Main Content -->
     <div class="p-4 sm:ml-64">
-        <!-- Search and Filter Section -->
         <div class="flex flex-col sm:flex-row gap-4 mb-6">
             <!-- Search Bar -->
             <div class="flex-grow">
@@ -52,20 +51,33 @@
             </div>
         </div>
 
+        
+            
+           
+            <!-- Create Task Button -->
+<div class="mb-6 flex justify-left">
+    <a href="{{ route('tasks.create') }}" 
+       class="flex items-center justify-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition  duration-200 w-auto">
+        <svg class="w-5 h-5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+        </svg>
+        Create Task
+    </a>
+</div>
         <!-- Task Cards Grid -->
-         <!-- if statement to check if the task list is empty and if it is display an image and a message 
+         <!-- An if statement to check if the task list is empty and if it is display an image and a message 
           else display the tasks created  -->
         @if ($tasks->isEmpty())
             <div class="flex flex-col items-center justify-center h-screen -mt-20">
                 <img src="{{ asset('images/task2.jpg') }}" alt="No Tasks" class="w-63 h-60 mb-4">
                 <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
-                    You currently have no tasks. Click the button below to create one!
+                    You currently have no tasks. Click the create task button above to create one!
                 </p>
                 <!-- Create Task Button -->
-                <a href="{{ route('tasks.create') }}" 
+                <!-- <a href="{{ route('tasks.create') }}" 
                    class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition duration-200">
                     Create Task
-                </a>
+                </a> -->
             </div>
         @else
             <!-- Display Tasks -->
@@ -113,12 +125,12 @@
     dark:focus:ring-red-800">
     Delete
 </button>
-<!-- Delete Form (Hidden) -->
+
 <form id="delete-form" action="{{ route('tasks.destroy', $task->id) }}" method="POST">
     @csrf
     @method('DELETE')
 </form>
-<!-- Confirmation Modal -->
+<!-- Delete Confirmation Modal -->
 <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 
     z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">

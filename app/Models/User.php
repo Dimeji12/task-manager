@@ -55,9 +55,5 @@ class User extends Authenticatable
         return $this->hasMany(Task::class);
     }
 
-      // Define the relationship to Role
-      public function role()
-      {
-          return $this->belongsTo(Role::class);
-      }
+     
 }
