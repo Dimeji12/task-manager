@@ -2,16 +2,22 @@
 
 Welcome to the **Task Management Laravel Application**! This is a simple yet powerful task management system built with Laravel, designed to help users organize, track, and manage their tasks efficiently.
 
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 🌟 Features
 
 - 🔒 **User Authentication**: Register, login, and manage your profile.
-- 📝 **Task Management**: Create, update, delete, and mark tasks as completed.
-- 🔍 **Search & Filter**: Easily search and filter tasks by title, category, or status.
+- 📝 **Task Management**:
+  - **View a list of tasks**: Display all tasks with their name, status, and due date.
+  - **Add a new task**: Create tasks with a name, description, and optional due date.
+  - **Edit a task**: Update task details like name, description, and status.
+  - **Delete a task**: Remove tasks you no longer need.
+  - **Mark a task as completed**: Toggle tasks between "in-progress" and "completed" status.
+- 🔍 **Search & Filter**: Easily search and filter tasks by their status (in-progress or completed).
+- 📅 **Due Dates**: Add optional due dates to tasks for better time management.
 - 📱 **Responsive Design**: Works seamlessly on both desktop and mobile devices.
-
----
-
+- ✅ **Validation and Error Handling**: Ensure task names are valid and display error messages when needed.
+- 📊 **Pagination**: Handle large task lists efficiently with pagination.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 🛠️ Prerequisites
 
 Before you begin, ensure you have the following installed:
@@ -22,7 +28,7 @@ Before you begin, ensure you have the following installed:
 - **MySQL** (or any other supported database)
 - **Git** (for version control)
 
----
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 🚀 Installation
 
@@ -32,8 +38,8 @@ Before you begin, ensure you have the following installed:
    ```bash
    git clone https://github.com/Dimeji12/task-manager.git
    cd task-manager
-
-Step 2: Set Up the .env File
+-------------------------------------------------------------------------------------
+2. Step 2: Set Up the .env File
 Copy the .env.example file to .env:
 
 cp .env.example .env
@@ -54,16 +60,15 @@ DB_USERNAME=root
 DB_PASSWORD=your_mysql_password_here
 Replace your_mysql_password_here with your MySQL password. If your MySQL server does not use a password, leave DB_PASSWORD empty.
 
-
-Step 3: Install Dependencies
+-------------------------------------------------------------------------------------------------------------
+3. Step 3: Install Dependencies
 Install Composer dependencies:
 
 composer install
 Install Node.js dependencies:
-
-
 npm install
-Step 4: Set Up the Database
+--------------------------------------------------------------------------------------
+4. Step 4: Set Up the Database
 Create the Database:
 
 Open your MySQL server (e.g., using phpMyAdmin, MySQL Workbench, or the MySQL command line).
@@ -82,8 +87,8 @@ php artisan db:seed
 
 Alternatively, run migrations and seeders together:
 php artisan migrate --seed
-
-Step 5: Run the Application
+-----------------------------------------------------------------------------------------------------------------------------
+5. Step 5: Run the Application
 Install Concurrently:
 Install concurrently globally to run multiple commands simultaneously:(server and client)
 npm install -g concurrently
@@ -99,7 +104,7 @@ Start Vite for frontend assets at http://localhost:5173.
 
 Access the Application:
 Open your browser and navigate to http://127.0.0.1:8000.
-
+----------------------------------------------------------------------------------------------------------------------
 👤 Log In or Register
 If You Seeded Users:
 If your seeder includes a default user, you can log in with the seeded credentials. 
@@ -117,9 +122,7 @@ Go to the login page (usually /login).
 Enter the email and password for the seeded or registered user.
 
 Submit the form to log in.
-
-
-
+---------------------------------------------------------------------------------------------------------------------
 
 🚨 Troubleshooting
 Common Issues
@@ -152,17 +155,6 @@ php artisan config:clear
 php artisan cache:clear
 php artisan view:clear
 php artisan route:clear
+--------------------------------------------------------------------------------------------------------------------
 
-🤝 Contributing
-If you'd like to contribute to this project, please follow these steps:
-
-Fork the repository.
-
-Create a new branch (git checkout -b feature/YourFeatureName).
-
-Commit your changes (git commit -m 'Add some feature').
-
-Push to the branch (git push origin feature/YourFeatureName).
-
-Open a Pull Request.
 
