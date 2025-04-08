@@ -1,0 +1,38 @@
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.task-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Ensure the card takes full height of its container */
+    max-height: 400px;
+    /* Set a maximum height for the card */
+    overflow: hidden;
+    /* Hide overflow */
+}
+
+.task-card h5 {
+    word-wrap: break-word;
+    /* Break long words */
+    overflow-wrap: break-word;
+    /* Ensure words break properly */
+}
+
+.task-card .description {
+    flex-grow: 1;
+    /* Allow description to grow within the card */
+    overflow-y: auto;
+    /* Add scrollbar for long descriptions */
+    max-height: 100px;
+    /* Set a maximum height for the description */
+}
+
+.task-card .buttons {
+    flex-shrink: 0;
+    /* Prevent buttons from shrinking */
+}
